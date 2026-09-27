@@ -3,38 +3,39 @@ package mod1;
 public class Main {
     public static void main(String[] args) {
 
-        // creates a new bag that stores dice names
-        Bag<String> bag = new Bag<>();
+        // first bag of dice
+        Bag<String> bag1 = new Bag<>();
+        bag1.add("D6 Die");
+        bag1.add("D20 Die");
+        bag1.add("D8 Die");
+        bag1.add("D12 Die");
+        bag1.add("D8 Die");
+        bag1.add("D20 Die");
 
-        // adds dice to the bag, including a duplicate d20 die
-        bag.add("D6 Die");
-        bag.add("D20 Die");
-        bag.add("D8 Die");
-        bag.add("D12 Die");
-        bag.add("D4 Die");
-        bag.add("D20 Die");
+        // second bag of dice
+        Bag<String> bag2 = new Bag<>();
+        bag2.add("D4 Die");
+        bag2.add("D4 Die");
+        bag2.add("D4 Die");
+        bag2.add("D3 Die");
+        bag2.add("D100 Die");
+        bag2.add("D20 Die");
+        bag2.add("D6 Die");
+        // print sizes of both bags
+        System.out.println("Amount of dice in Bag 1: " + bag1.size());
+        System.out.println("Amount of dice in Bag 2: " + bag2.size());
 
-        // prints the initial contents of the bag
-        System.out.println("Initial Contents of Dice Bag: " + bag);
+        // merge bag2 into bag1
+        System.out.println("Merging Bag 2 into Bag 1");
+        bag1.merge(bag2);
 
-        // checks if specific dice are in the bag
-        System.out.println("Does the bag still contain a D20?: " + bag.contains("D20 Die"));
-        System.out.println("Does the bag still contain a D12?: " + bag.contains("D12 Die"));
+        // print merged contents
+        System.out.println("Dice inside merged bag: " + bag1);
 
-        // counts how many of each die type are currently in the bag
-        System.out.println("Count of D20 Dice: " + bag.count("D20 Die"));
-        System.out.println("Count of D8 Dice: " + bag.count("D8 Die"));
-        System.out.println("Count of D12 Dice: " + bag.count("D12 Die"));
+        // create a bag with only distinct dice
+        Bag<String> distinctBag = bag1.distinct();
 
-        // removes one d20 die from the bag
-        System.out.println("Removing one of the D20 Dice from the bag");
-        bag.remove("D20 Die");
-
-        // prints the updated contents after removal
-        System.out.println("Dice types remaining in the bag after removal: " + bag);
-
-        // checks if the d20 is still in the bag, and how many of them remain
-        System.out.println("Bag contains D20 Dice after removal: " + bag.contains("D20 Die"));
-        System.out.println("Number of D20 Dice remaining after removal: " + bag.count("D20 Die"));
+        // print distinct contents
+        System.out.println("Actual dice types in the bag: " + distinctBag);
     }
 }

@@ -2,7 +2,7 @@ package mod1;
 
 import java.util.ArrayList;
 
-// bag class that stores items and accepts duplicates items
+// bag class that stores items and allows duplicates
 public class Bag<T> {
 
     // internal list that holds all items in the bag
@@ -38,6 +38,31 @@ public class Bag<T> {
             }
         }
         return counter;
+    }
+
+    // returns the total number of items in the bag
+    public int size() {
+        return items.size();
+    }
+
+    // merges another bag into this bag
+    public void merge(Bag<T> otherBag) {
+        // add all items from the other bag into this one
+        for (T element : otherBag.items) {
+            items.add(element);
+        }
+    }
+
+    // returns a new bag with only distinct items
+    public Bag<T> distinct() {
+        Bag<T> distinctBag = new Bag<>();
+        // add each item only once
+        for (T element : items) {
+            if (!distinctBag.contains(element)) {
+                distinctBag.add(element);
+            }
+        }
+        return distinctBag;
     }
 
     // returns a readable version of the bag contents to print
